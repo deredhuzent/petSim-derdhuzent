@@ -47,38 +47,61 @@ namespace petSim
         // is hungry
         public void isHungry()
         {
+
+            hunger = hunger - 1;
+
             if (hunger< 5)
             {
               Console.WriteLine(name + " is very hungry!!! Need to be feed!!!");
+
             } else if (hunger < 3)
             {
                 Console.WriteLine("You need to feed" + name);
+
             } else if (hunger < 1){
+
                 Console.WriteLine("You need to feed" + name + ", NOW!!!");
+
             } 
-            
         }
 
         // is tired
-        public void isTitred()
+        public void isTired()
         {
+
+            energy = energy - 1;
+
             if (energy < 5)
             {
+
                 Console.WriteLine(name + " is very tired!!! Need to sleep!!!");
+
             }
             else if (energy < 3)
             {
+
                 Console.WriteLine(name + " REALLY needs to sleep!!!.");
+
             }
             else if (energy < 1)
             {
-                //puts to sleep
-            }
 
+                //TODO: puts to sleep
+
+            }
+        }
+
+        //fells lonely
+        public void feelsLonely()
+        {
+
+            affection = affection - 1;
+
+            //TODO
         }
 
         //has been fed
-        public int feed()
+        public void feed()
         {
             hunger = hunger + 1;
 
@@ -88,7 +111,28 @@ namespace petSim
             {
                 Console.WriteLine(name + " is satisfied!!!");
             }
-            return hunger;
+        }
+
+        //sleep
+        public void sleep()
+        {
+            energy = energy + 1;
+
+            Console.WriteLine(name + "is sleeping");
+
+            if(energy == 10)
+            {
+                //TODO: awakes
+            }
+        }
+
+        //felling loved
+        public void love()
+        {
+
+            affection = affection + 1;
+
+            //TODO
         }
 
         //Time pass, rest parameters
