@@ -19,6 +19,7 @@ namespace petSim
         //constructor
         public Pet(string name, string owner, int hunger, int energy, int affection)
         {
+
             this.name = name;
             this.owner = owner;
             this.hunger = hunger;
@@ -35,6 +36,59 @@ namespace petSim
             Utils.printAt("Hunger: " + hunger, 5, 4);
             Utils.printAt("Energy: " + energy, 5, 5);
             Utils.printAt("Affection: " + affection, 5, 6);
+        }
+
+        //pet alive
+        public bool isAlive()
+        {
+            return hunger > 0 && energy > 0;
+        }
+
+        // is hungry
+        public void isHungry()
+        {
+            if (hunger< 5)
+            {
+              Console.WriteLine(name + " is very hungry!!! Need to be feed!!!");
+            } else if (hunger < 3)
+            {
+                Console.WriteLine("You need to feed" + name);
+            } else if (hunger < 1){
+                Console.WriteLine("You need to feed" + name + ", NOW!!!");
+            } 
+            
+        }
+
+        // is tired
+        public void isTitred()
+        {
+            if (energy < 5)
+            {
+                Console.WriteLine(name + " is very tired!!! Need to sleep!!!");
+            }
+            else if (energy < 3)
+            {
+                Console.WriteLine(name + " REALLY needs to sleep!!!.");
+            }
+            else if (energy < 1)
+            {
+                //puts to sleep
+            }
+
+        }
+
+        //has been fed
+        public int feed()
+        {
+            hunger = hunger + 1;
+
+            Console.WriteLine(name + " has been fed");
+
+            if(hunger == 10)
+            {
+                Console.WriteLine(name + " is satisfied!!!");
+            }
+            return hunger;
         }
 
         //Time pass, rest parameters

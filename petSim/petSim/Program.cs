@@ -28,7 +28,7 @@ namespace petSim
         public Program()
         {
             screen = new Screen(width, height);
-            
+
         }
 
         //ask for username
@@ -120,8 +120,8 @@ namespace petSim
             //screen that can be modify with parameters
             Program program = new Program();
 
-           // program.getUsername();
-            //program.getPetName();
+            program.getUsername();
+            program.getPetName();
 
             program.gameLoop();
 
