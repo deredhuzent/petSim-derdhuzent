@@ -9,24 +9,27 @@ namespace petSim
     class Pet
     {
         //variables
-        
+        Screen screen = null;
         string owner = null;
         string name = null;
 
         int hunger = 0;
         int energy = 0;
         int affection = 0;
+
      
 
 
         //constructor
-        public Pet(string name, string owner, int hunger, int energy, int affection, Screen screen)
+        public Pet(string name, string owner, int hunger, int energy, int affection, Screen currentScreen)
         {
             this.name = name;
             this.owner = owner;
             this.hunger = hunger;
             this.energy = energy;
             this.affection = affection;
+            this.screen = currentScreen;
+
         }
 
         //Pet State
@@ -47,78 +50,100 @@ namespace petSim
         }
 
         // is hungry
-        public void isHungry()
+        public void getHungry()
         {
 
             hunger = hunger - 1;
 
-            if (hunger <= 15)
+            if (hunger <= 3)
             {
-              Utils.printAt(name + " is very hungry!!! Need to be feed!!!", 17, 4);
+                Utils.printAt("You need to feed " + name + ", NOW!!!", 17, 4);
+                getTired();
+                getLonely();
 
             } else if (hunger <= 10)
             {
                 Utils.printAt("You need to feed" + name, 17, 4);
+                getTired();
+                getLonely();
+                
 
-            } else if (hunger <= 1){
+            } else if (hunger <= 15){
 
-                Utils.printAt("You need to feed" + name + ", NOW!!!", 17, 4);
+                Utils.printAt(name + " is very hungry!!! Need to be feed!!!", 17, 4);
 
             } 
         }
 
         // is tired
-        public void isTired()
+        public void getTired()
         {
 
             energy = energy - 1;
 
-            if (energy < 15)
+            if (energy <= 3)
+            {
+
+                Utils.printAt(name + " if you don't take care of " + name + ", it will die!!!", 17, 5);
+                getLonely();
+
+            }
+            else if (energy <= 10)
+            {
+
+                Utils.printAt(name + " REALLY needs to sleep!!!.", 17, 5);
+                getLonely();
+
+            }
+            else if (energy <= 15)
             {
 
                 Utils.printAt(name + " is very tired!!! Need to sleep!!!", 17, 5);
 
             }
-            else if (energy < 10)
-            {
-
-                Utils.printAt(name + " REALLY needs to sleep!!!.", 17, 5);
-
-            }
-            else if (energy < 5)
-            {
-
-                //TODO: puts to sleep
-
-            }
         }
 
         //fells lonely
-        public void feelsLonely()
+        public void getLonely()
         {
 
             affection = affection - 1;
 
-            if (affection <= 15)
+            if (affection <= 3)
             {
-                
-                Utils.printAt(name + " is feeling lonely, show your love", 17, 6);
-                isTired();
+                Utils.printAt(name + " is is relly depressed!!! Needs your love!!!", 18, 6);
+                getTired();
 
             } else if (affection <= 10)
             {
 
-                Utils.printAt(name + " is feelling depressed, don't let it be lonely", 17, 6);
-                isTired();
+                Utils.printAt(name + " is feelling depressed, don't let it be lonely", 18, 6);
+                getTired();
 
-            } else if(affection <= 5)
+            } else if(affection <= 15)
             {
 
-                Utils.printAt(name + " is is relly depressed!!! Needs your love!!!", 17, 6);
-                isTired();
+                Utils.printAt(name + " is feeling lonely, show your love", 18, 6);
+                getTired();
 
             }
         }
+
+        //ACTIONS
+        public void chooseAction()
+        {
+            Utils.centerText("Choose an action:", screen.width, screen.height / 2 -1);
+            Utils.centerText("", screen.width, screen.height / 2);
+            Utils.centerText("Feed", screen.width, screen.height / 2 + 1);
+            Utils.centerText("Sleep", screen.width, screen.height / 2 + 2);
+            Utils.centerText("Give Love", screen.width, screen.height / 2 + 3);
+        }
+
+        public void selectionPointer()
+        {
+
+        }
+
 
         //has been fed
         public void feed()
@@ -126,6 +151,7 @@ namespace petSim
             hunger = hunger + 1;
 
             Utils.printAt(name + " has been fed", 17, 4);
+
 
             if(hunger == 10)
             {
@@ -138,8 +164,10 @@ namespace petSim
         {
             energy = energy + 1;
 
-            //Utils.printAt(name + "is sleeping", width, height/2);
-            //Utils.printAt("Zzz", width, height/2 +1);
+            Utils.printAt(name + "is sleeping", screen.width, screen.height/2);
+            Utils.printAt("Zzz", screen.width, screen.height/2 +1);
+            
+            //TODO: block other actions
 
             if(energy == 10)
             {
@@ -157,6 +185,21 @@ namespace petSim
         }
 
         //TODO: Time pass, rest parameters
+        public void days()
+        {
+            //call resting functions
+            getHungry();
+            getTired();
+            getLonely();
+
+            //counter of a day every 5 mins
+            int counter = 300;
+            for (int i = 0; i > counter; i ++) {
+                //days!
+            }
+            //counting days
+
+        }
         //add actions
     }
 }

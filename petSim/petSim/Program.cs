@@ -108,11 +108,21 @@ namespace petSim
         //game cycle
         public void gameLoop()
         {
-            //TODO: stats 30
-            pet = new Pet(petName, username, 15, 15, 15, screen);
 
-            screen.PrintScreen();
-            pet.petStatus();
+            do
+            {
+                //TODO: stats 30
+                pet = new Pet(petName, username, 30, 30, 30, screen);
+
+                screen.PrintScreen();
+                pet.petStatus();
+                pet.chooseAction();
+                pet.days();
+
+                Console.ReadLine();
+            } while (true);
+
+            
 
         }
 
