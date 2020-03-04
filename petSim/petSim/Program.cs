@@ -108,10 +108,12 @@ namespace petSim
         //game cycle
         public void gameLoop()
         {
-            pet = new Pet(petName, username, 10, 10, 10);
+            //TODO: stats 30
+            pet = new Pet(petName, username, 15, 15, 15, screen);
 
             screen.PrintScreen();
             pet.petStatus();
+
         }
 
         static void Main(string[] args)
@@ -120,8 +122,9 @@ namespace petSim
             //screen that can be modify with parameters
             Program program = new Program();
 
-            program.getUsername();
-            program.getPetName();
+            //TODO: uncomment
+            //program.getUsername();
+            //program.getPetName();
 
             program.gameLoop();
 
