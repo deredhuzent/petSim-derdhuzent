@@ -17,8 +17,10 @@ namespace petSim
         int energy = 0;
         int affection = 0;
 
-     
-
+        private int pointerPosition;
+        string select;
+        string pointer = "  <<--";
+        string emptyPointer = "";
 
         //constructor
         public Pet(string name, string owner, int hunger, int energy, int affection, Screen currentScreen)
@@ -134,14 +136,14 @@ namespace petSim
         {
             Utils.centerText("Choose an action:", screen.width, screen.height / 2 -1);
             Utils.centerText("", screen.width, screen.height / 2);
-            Utils.centerText("Feed", screen.width, screen.height / 2 + 1);
+            Utils.centerText("Feed"+ pointer, screen.width, screen.height / 2 + 1);
             Utils.centerText("Sleep", screen.width, screen.height / 2 + 2);
             Utils.centerText("Give Love", screen.width, screen.height / 2 + 3);
         }
 
         public void selectionPointer()
         {
-
+             
         }
 
 
@@ -151,7 +153,6 @@ namespace petSim
             hunger = hunger + 1;
 
             Utils.printAt(name + " has been fed", 17, 4);
-
 
             if(hunger == 10)
             {
@@ -183,6 +184,8 @@ namespace petSim
 
             //TODO, increase by activities?  
         }
+
+
 
         //TODO: Time pass, rest parameters
         public void days()

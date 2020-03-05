@@ -117,7 +117,7 @@ namespace petSim
                 screen.PrintScreen();
                 pet.petStatus();
                 pet.chooseAction();
-                pet.days();
+                //pet.days();
 
                 Console.ReadLine();
             } while (true);
