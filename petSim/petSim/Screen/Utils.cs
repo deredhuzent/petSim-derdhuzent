@@ -20,7 +20,7 @@ namespace petSim
         public static void printAt(string text, int width, int height)
         {
             Console.SetCursorPosition(width, height);
-            Console.Write(text);
+            Console.Write(text); 
         }
     }
 

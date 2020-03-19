@@ -109,17 +109,29 @@ namespace petSim
         public void gameLoop()
         {
 
+            pet = new Pet(petName, username, 10, 10, 10, screen);
             do
             {
-                //TODO: stats 30
-                pet = new Pet(petName, username, 30, 30, 30, screen);
-
                 screen.PrintScreen();
                 pet.petStatus();
                 pet.chooseAction();
-                //pet.days();
-
+                pet.timePasses();
+         
                 Console.ReadLine();
+
+                if (!pet.isAlive()) {
+
+                    Utils.centerText("                    -|-                     ", screen.width, screen.height / 2 - 3);
+                    Utils.centerText("                     |                      ", screen.width, screen.height / 2 - 2);
+                    Utils.centerText("                 .-'~~~`-.                  ", screen.width, screen.height / 2 - 1);
+                    Utils.centerText("               .'         `.                ", screen.width, screen.height / 2 + 1);
+                    Utils.centerText("               |  R  I  P  |                ", screen.width, screen.height / 2 + 2);
+                    Utils.centerText("               |           |                ", screen.width, screen.height / 2 + 3);
+                    Utils.centerText("               |           |                ", screen.width, screen.height / 2 + 4);
+                    Utils.centerText("             \\|           |//              ", screen.width, screen.height / 2 + 5);
+                    Utils.centerText("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^", screen.width, screen.height / 2 + 6);
+                    break;
+                };
             } while (true);
 
             
@@ -132,9 +144,8 @@ namespace petSim
             //screen that can be modify with parameters
             Program program = new Program();
 
-            //TODO: uncomment
-            //program.getUsername();
-            //program.getPetName();
+            program.getUsername();
+            program.getPetName();
 
             program.gameLoop();
 
